@@ -1,28 +1,87 @@
 import React from 'react';
+import {
+  LineChart,
 
+} from "react-native-gifted-charts"; 
+import { Dimensions } from "react-native";
+const screenWidth = Dimensions.get("window").width;
 import {
   SafeAreaView,
   StyleSheet,
   Text,
   Platform,
   StatusBar,
+  View,
+  ScrollView,
+  FlatList,
+  SectionList
 } from 'react-native';
 
 const App = () => {
-  console.log(Platform.OS);
+  const datas=[ {value:50}, {value:80}, {value:90}, {value:70} ]
+  const data = ['Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi"]
+  const pending = [{pending: 302, site: "Mirjapur"}, {pending: 1, site: "Lucknow"}, {pending: 10034, site: "Amethi"},{pending: 302, site: "Mirjapur"}, {pending: 1, site: "Lucknow"}, {pending: 10034, site: "Amethi"}]
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Welcome to S.S Furniture Steel Mart</Text>
+      <Text style={styles.header}>Welcome to S.S Furniture Steel Mart</Text>
+    <View style={styles.recent}><Text style={styles.header}> Recent Work Sites</Text><FlatList data={data} renderItem={({item})=> <Text onPress={()=> {console.log(`Clicked ${item}`)}} style={styles.recentItems}>{item}</Text>} horizontal={true} showsHorizontalScrollIndicator={false}/></View>
+    <View style={{flex:1, justifyContent: "center", alignContent: "center", margin: "auto",backgroundColor: '#1A3461'}}><LineChart data={datas}  isAnimated={true}            initialSpacing={0}
+             
+              spacing={30}
+              hideDataPoints
+              thickness={5}
+              hideRules
+              hideYAxisText
+              yAxisColor="#0BA5A4"
+              showVerticalLines
+              verticalLinesColor="rgba(14,164,164,0.5)"
+              xAxisColor="#0BA5A4"
+              color="#0BA5A4"/></View>
+    
+
+    <View><Text style={styles.header}>Pending Labour Cost</Text><FlatList data={pending} renderItem={({item})=> {
+      return(<View style={styles.tableN}><Text style={styles.table}>{item.site}: </Text><Text style={styles.table}>{item.pending}</Text></View>)}}/></View>
+      
     </SafeAreaView>
+    
   );
 };
 
 const styles = StyleSheet.create({
+
+  
   container: {
     paddingTop: StatusBar.currentHeight,
-    height: 100,
-    width: 100,
+
+    height: "100%",
+    width: "100%",
   },
+  header: {
+    textAlign: "center",
+    fontSize: 20,
+    
+  },
+  recent: {backgroundColor: "grey", padding: 10},
+recentItems: {
+  padding: 10,
+  backgroundColor: 'orange',
+  margin: 5
+},
+tableN: {
+  flex: 1,
+  flexDirection: "row",
+  justifyContent: "center",
+  backgroundColor: "black",
+  borderWidth: 1,
+  borderColor: "white",
+  padding:10
+},
+table: {
+  backgroundColor: "black",
+  color: "white",
+  borderColor: "white",
+  textAlign: "center"
+}
 });
 
 export default App;
