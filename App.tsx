@@ -4,6 +4,7 @@ import {
 
 } from "react-native-gifted-charts"; 
 
+import styles from "./App_styles"
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
 import {
@@ -79,48 +80,8 @@ const Home = () => {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      
       <BottomMenu/>
-    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-
-  
-  container: {
-    paddingTop: StatusBar.currentHeight,
-    
-    height: "100%",
-    width: "100%",
-  },
-  header: {
-    textAlign: "center",
-    fontSize: 20,
-    
-  },
-  recent: {backgroundColor: "grey", padding: 10},
-recentItems: {
-  padding: 10,
-  backgroundColor: 'orange',
-  margin: 5
-},
-tableN: {
-  flex: 1,
-  flexDirection: "row",
-  justifyContent: "center",
-  backgroundColor: "black",
-  borderWidth: 1,
-  borderColor: "white",
-  padding:10
-},
-table: {
-  backgroundColor: "black",
-  color: "white",
-  borderColor: "white",
-  textAlign: "center"
-}
-});
 
 export default App;
