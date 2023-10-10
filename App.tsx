@@ -19,7 +19,7 @@ import {
   SectionList
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
+import WorkSites from './screens/Worksites/page';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -34,14 +34,14 @@ function SettingsScreen() {
 
 function BottomMenu() {
   return (
-    <Tab.Navigator screenOptions={{headerStyle: {backgroundColor: "black"},tabBarItemStyle: {backgroundColor:"black"}, tabBarBadgeStyle: {backgroundColor: "black"}, tabBarStyle: {backgroundColor: "black"}}}>
+    <Tab.Navigator screenOptions={{headerStyle: {backgroundColor: "black"}, headerTitleStyle: {color: "white"},tabBarItemStyle: {backgroundColor:"black"}, tabBarBadgeStyle: {backgroundColor: "black"}, tabBarStyle: {backgroundColor: "black"}}}>
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Work Sites" component={WorkSites}/>
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
 const Home = () => {
-  console.log(Platform.OS)
   StatusBar.setBackgroundColor("black")
   const datas=[ {value:50, label: "first"}, {value:80,label: "second"}, {value:90,label: "third"}, {value:70, label: "fourth"} ]
   const data = ['Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi"]
