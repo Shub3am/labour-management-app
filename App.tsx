@@ -3,6 +3,7 @@ import {
   LineChart,
 
 } from "react-native-gifted-charts"; 
+
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
 import {
@@ -14,6 +15,7 @@ import {
   View,
   ScrollView,
   FlatList,
+  
   SectionList
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,19 +26,23 @@ const Tab = createBottomTabNavigator();
 
 
 
+
+
 function SettingsScreen() {
-  return <Text>Ok Mamu</Text>
+  return <Text>Testing</Text>
 }
 
 function BottomMenu() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{headerStyle: {backgroundColor: "black"},tabBarItemStyle: {backgroundColor:"black"}, tabBarBadgeStyle: {backgroundColor: "black"}, tabBarStyle: {backgroundColor: "black"}}}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
 const Home = () => {
+  console.log(Platform.OS)
+  StatusBar.setBackgroundColor("black")
   const datas=[ {value:50, label: "first"}, {value:80,label: "second"}, {value:90,label: "third"}, {value:70, label: "fourth"} ]
   const data = ['Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi",'Mirjapur', "Lucknow", "Amethi"]
   const pending = [{pending: 302, site: "Mirjapur"}, {pending: 1, site: "Lucknow"}, {pending: 10034, site: "Amethi"},{pending: 302, site: "Mirjapur"}, {pending: 1, site: "Lucknow"}, {pending: 10034, site: "Amethi"}]
@@ -60,7 +66,7 @@ const Home = () => {
               xAxisColor="#0BA5A4"
               color="#0BA5A4"/></View>
     
-
+    
     <View><Text style={styles.header}>Pending Labour Cost</Text><FlatList data={pending} renderItem={({item})=> {
       return(<View style={styles.tableN}><Text style={styles.table}>{item.site}: </Text><Text style={styles.table}>{item.pending}</Text></View>)}}/></View>
 
@@ -74,6 +80,7 @@ const Home = () => {
 const App = () => {
   return (
     <NavigationContainer>
+      
       <BottomMenu/>
     </NavigationContainer>
   )
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
   
   container: {
     paddingTop: StatusBar.currentHeight,
-
+    
     height: "100%",
     width: "100%",
   },
